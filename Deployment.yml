@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: lab10-zad2
+  namespace: default
+  labels:
+    app: lab10-zad2
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: lab10-zad2
+  template:
+    metadata:
+      labels:
+        app: lab10-zad2
+    spec:
+      containers:
+      - name: lab10-zad2
+        image: lab10-zad2
+        ports:
+        - containerPort: 8080
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+     maxUnavailable: 2
+     maxSurge: 1
+     
